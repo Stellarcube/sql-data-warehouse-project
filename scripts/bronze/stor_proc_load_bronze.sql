@@ -1,6 +1,6 @@
 /*  
 **********************************************************************************************
-Stored Procedure: Load Bronze Layer (Source -> Bronze)
+Stored Procedure: Load Bronze Layer (Source -> Bronze Layer)
 **********************************************************************************************
 Script Purpose: 
   This stored procedure loads data into the 'bronze' schema from the source files(CSV).
@@ -14,9 +14,6 @@ Usage Example:
   EXEC bronze.load_bronze;
 **********************************************************************************************
 */
-
--- Developing SQL load scripts.
--- (Data loading achieved using BULK INSERT)
 
 CREATE OR ALTER PROCEDURE bronze.load_bronze -- Stored procedure for loading data
 AS
