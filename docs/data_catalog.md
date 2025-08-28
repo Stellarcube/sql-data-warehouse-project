@@ -54,8 +54,8 @@ The Gold Layer is the business-level data representation, structured to support 
 | product_key     | INT           | Surrogate key linking the order to the product dimension table.                               |
 | customer_key    | INT           | Surrogate key linking the order to the customer dimension table.                              |
 | order_date      | DATE          | The date when the order was placed.                                                           |
-| shipping_date   | DATE          | The date when the order was shipped to the customer.                                          |
+| ship_date   | DATE          | The date when the order was shipped to the customer.                                          |
 | due_date        | DATE          | The date when the order payment was due.                                                      |
-| sales_amount    | INT           | The total monetary value of the sale for the line item, in whole currency units (e.g., 25).   |
+| sales    | INT           | The total monetary value of the sale for the line item, in whole currency units (e.g., 25).   |
 | quantity        | INT           | The number of units of the product ordered for the line item (e.g., 1).                       |
 | price           | INT           | The price per unit of the product for the line item, in whole currency units (e.g., 25).      |
