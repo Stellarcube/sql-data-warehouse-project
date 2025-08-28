@@ -85,8 +85,8 @@ The project follows the **Medallion Architecture**:
 3. **Load**
 
    * Bronze: Raw ingestion.
-   * Silver: Cleaned data.
-   * Gold: Analytical models (star schema).
+   * Silver: Data cleansing & Standardization
+   * Gold: Business ready views (star schema).
 
 ---
 
