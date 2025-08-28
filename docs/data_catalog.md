@@ -37,7 +37,7 @@ The Gold Layer is the business-level data representation, structured to support 
 | category_id         | NVARCHAR(50)  | A unique identifier for the product's category, linking to its high-level classification.     |
 | category            | NVARCHAR(50)  | The broader classification of the product (e.g., Bikes, Components) to group related items.  |
 | subcategory         | NVARCHAR(50)  | A more detailed classification of the product within the category, such as product type.      |
-| maintenance_required| NVARCHAR(50)  | Indicates whether the product requires maintenance (e.g., 'Yes', 'No').                       |
+| maintenance         | NVARCHAR(50)  | Indicates whether the product requires maintenance (e.g., 'Yes', 'No').                       |
 | cost                | INT           | The cost or base price of the product, measured in monetary units.                            |
 | product_line        | NVARCHAR(50)  | The specific product line or series to which the product belongs (e.g., Road, Mountain).      |
 | start_date          | DATE          | The date when the product became available for sale or use, stored in|
@@ -54,8 +54,8 @@ The Gold Layer is the business-level data representation, structured to support 
 | product_key     | INT           | Surrogate key linking the order to the product dimension table.                               |
 | customer_key    | INT           | Surrogate key linking the order to the customer dimension table.                              |
 | order_date      | DATE          | The date when the order was placed.                                                           |
-| ship_date   | DATE          | The date when the order was shipped to the customer.                                          |
+| ship_date       | DATE          | The date when the order was shipped to the customer.                                          |
 | due_date        | DATE          | The date when the order payment was due.                                                      |
-| sales    | INT           | The total monetary value of the sale for the line item, in whole currency units (e.g., 25).   |
+| sales           | INT           | The total monetary value of the sale for the line item, in whole currency units (e.g., 25).   |
 | quantity        | INT           | The number of units of the product ordered for the line item (e.g., 1).                       |
 | price           | INT           | The price per unit of the product for the line item, in whole currency units (e.g., 25).      |
