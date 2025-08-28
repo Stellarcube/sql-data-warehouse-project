@@ -48,11 +48,11 @@ This document outlines the naming conventions used for schemas, tables, views, c
 
 #### **Glossary of Category Patterns**
 
-| Pattern     | Meaning                           | Example(s)                              |
-|-------------|-----------------------------------|-----------------------------------------|
+| Pattern     | Meaning                          | Example(s)                              |
+|-------------|----------------------------------|-----------------------------------------|
 | `dim_`      | Dimension table                  | `dim_customer`, `dim_product`           |
 | `fact_`     | Fact table                       | `fact_sales`                            |
-| `report_`   | Report table                     | `report_customers`, `report_sales_monthly`   |
+| `report_`   | Report table                     | `report_customers`, `report_sales_monthly`|
 
 ## **Column Naming Conventions**
 
