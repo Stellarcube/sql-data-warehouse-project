@@ -1,100 +1,145 @@
-# 🏗️ SQL Data Warehouse Project
-Building a modern data warehouse with SQL server, including ETL processes, data modeling, and analytics.
+# SQL Data Warehouse Project
 
-## 📌 Project Overview
-This project demonstrates the end-to-end development of a modern SQL-based data warehouse solution. It consolidates sales data from ERP and CRM systems to enable analytical reporting and informed decision-making. The architecture follows best practices in data engineering, modeling, and transformation using the Medallion architecture.
+## 📌 Overview
 
-## 🎯 Goals
+This project demonstrates how to design and build a **modern SQL Data Warehouse** from scratch by applying industry best practices in **data architecture, engineering, and modeling**. It follows a structured approach to extract, transform, and load (ETL) data from multiple source systems into a consolidated analytical model for business reporting.
 
-- 🧱 Design a scalable and modern data architecture.
-- 🛠️ Implement robust ETL pipelines to clean, transform, and load data.
-- 📊 Create an analytical data model optimized for reporting and insights.
+The implementation follows the **Medallion Architecture (Bronze, Silver, Gold layers)**, ensuring clean, well-documented, and analysis-ready data.
 
 ---
 
-## 🗂️ Project Structure
+## 🎯 Project Goals
 
-### 1. Data Sources
-
-- **ERP System** – CSV format
-- **CRM System** – CSV format
-
-### 2. ETL Pipeline
-
-#### 🔍 Extraction
-- Methods: Pull & Push
-- Types: Full & Incremental
-- Techniques: File parsing, API calls, CDC, event-based streaming
-
-#### 🔄 Transformation
-- Data cleaning: deduplication, filtering, type casting, outlier detection
-- Data enrichment & normalization
-- Business logic implementation
-- Derived columns
-
-#### 📥 Load
-- Processing: Batch
-- Methods: Full load (Truncate & Insert), Upsert
+* **Data Architecture**: Design a modern data warehouse architecture.
+* **Data Engineering**: Build ETL pipelines to clean, transform, and load data.
+* **Data Modeling**: Create analytical data models (fact and dimension tables) for reporting.
 
 ---
 
-## 🧱 Architecture
+## 📂 Repository Structure
 
-### 🏛️ Medallion Architecture
-
-| Layer   | Purpose                        | Object Type | Load Method       | Audience               |
-|---------|--------------------------------|-------------|-------------------|------------------------|
-| Bronze  | Raw & unprocessed data         | Table       | Full (Truncate)   | Data Engineers         |
-| Silver  | Cleaned & standardized data    | Table       | Full (Truncate)   | Analysts, Engineers    |
-| Gold    | Business-ready data            | View        | N/A               | Analysts, Business     |
-
----
-
-## 🧮 Data Modeling
-
-- **Modeling Approach**: Star schema with flat tables
-- **Scope**: Latest dataset only (no historization)
-- **SCD Type**: SCD1 (overwrite)
-
----
-
-## 🧰 Tools & Technologies
-
-- SQL Server
-- CSV (source files)
-- ETL scripting (SQL-based)
-- Views for reporting
-
----
-
-## 📄 Documentation
-
-- Clear documentation of schema, transformations, and business logic
-- Designed for both technical and non-technical stakeholders
+```bash
+sql-data-warehouse-project/
+│
+├── datasets/                           # Raw datasets (ERP and CRM CSV files)
+│
+├── docs/                               # Documentation and diagrams
+│   ├── data_architecture.drawio.png    # Project architecture
+│   ├── data_flow_diagram.drawio.png    # Data flow diagram
+│   ├── data_model.drawio.png           # Data model (Star Schema)
+│   ├── integration_model.drawio.png    # Table integration model
+│   ├── data_catalog.md                 # Dataset descriptions and metadata
+│   ├── naming-conventions.md           # Naming conventions for objects
+│
+├── scripts/                            # SQL scripts for ETL and transformations
+│   ├── bronze/                         # Raw data ingestion
+│   ├── silver/                         # Data cleaning and standardization
+│   ├── gold/                           # Business-ready models
+│
+├── tests/                              # Data validation and quality checks
+│
+├── LICENSE                             # License file
+└── README.md                           # Project overview (this file)
+```
 
 ---
 
-## 🧠 Design Principles
+## 🏗️ Architecture
 
-- **Separation of Concerns**: Each layer and component has a distinct responsibility
-- **Naming Conventions**: Consistent and descriptive naming across tables, views, and scripts
+The project follows the **Medallion Architecture**:
+
+1. **Bronze Layer**
+
+   * Stores raw, unprocessed data.
+   * Objective: Traceability & debugging.
+   * Load method: Full load (truncate & insert).
+
+2. **Silver Layer**
+
+   * Stores clean & standardized data.
+   * Objective: Prepare data for analysis.
+   * Includes data cleansing, normalization, derived columns, and enrichment.
+
+3. **Gold Layer**
+
+   * Stores business-ready, analytical data.
+   * Objective: Reporting & dashboards.
+   * Includes fact & dimension tables, business rules, and aggregations.
 
 ---
 
-## 📈 Future Enhancements
+## 🔄 ETL Process
 
-- Implement historization using SCD2
-- Introduce incremental loading via CDC
-- Extend to real-time streaming architecture
+1. **Extract**
+
+   * Sources: ERP and CRM CSV files.
+   * Methods: File parsing, bulk inserts, API support (future-ready).
+   * Types: Full and incremental loads.
+
+2. **Transform**
+
+   * Data cleaning: remove duplicates, fix missing values, standardize formats.
+   * Data enrichment: add metadata columns (e.g., load timestamp, source system).
+   * Apply business rules and derived fields.
+
+3. **Load**
+
+   * Bronze: Raw ingestion.
+   * Silver: Cleaned data.
+   * Gold: Analytical models (star schema).
 
 ---
 
-## 🤝 Contributing
+## 📊 Data Modeling
 
-Contributions are welcome! Please fork the repo and submit a pull request with your improvements or suggestions.
+* **Conceptual Model**: Big picture of entities and relationships.
+* **Logical Model**: Defines attributes, keys, and relationships.
+* **Physical Model**: SQL implementation with data types and constraints.
+
+**Schema Options**:
+
+* **Star Schema**: Central fact table linked to dimension tables.
+* **Snowflake Schema**: Normalized dimension tables.
 
 ---
 
-## 📬 Contact
+## ✅ Tests & Validation
 
-For questions or collaboration inquiries, reach out via GitHub Issues or connect with the project lead.
+* Record count checks (source vs warehouse).
+* Schema validation.
+* Data quality checks (duplicates, nulls, invalid values).
+* Business rule validation.
+
+---
+
+## 📖 Documentation
+
+All documentation is stored under the `docs/` folder:
+
+* **Data Architecture**
+* **Data Flow Diagram**
+* **Data Model (Star Schema)**
+* **Integration Model**
+* **Data Catalog**
+* **Naming Conventions**
+
+---
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/<Stellarcube>/sql-data-warehouse-project.git
+   cd sql-data-warehouse-project
+   ```
+2. Load datasets from `datasets/` into the Bronze layer using scripts in `scripts/bronze/`.
+3. Apply Silver layer transformations using `scripts/silver/`.
+4. Build analytical models from `scripts/gold/`.
+5. Run validation tests from `tests/`.
+
+---
+
+## 📜 License
+
+This project is licensed under the terms specified in the [LICENSE](LICENSE) file.
